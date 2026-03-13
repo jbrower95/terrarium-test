@@ -1,69 +1,16 @@
+# .github/workflows/terrarium.yml
 name: Terrarium
 on:
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch: {}
-
-permissions:
-  id-token: write
-  contents: write
-  issues: write
-  pull-requests: write
-  actions: write
-
 jobs:
   owner:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Checkout terrarium source
-        uses: actions/checkout@v4
-        with:
-          repository: jbrower95/terrarium
-          path: terrarium-src
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: Build terrarium-owner
-        run: |
-          cd terrarium-src
-          cargo build --release -p terrarium-owner
-          cp target/release/terrarium-owner ../terrarium-owner
-          chmod +x ../terrarium-owner
-          cd ..
-          rm -rf terrarium-src
-
-      - name: Run owner cycle
-        env:
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          TERRARIUM_MODEL_OWNER: ${{ vars.TERRARIUM_MODEL_OWNER }}
-          TERRARIUM_MODEL_HIGH: ${{ vars.TERRARIUM_MODEL_HIGH }}
-          TERRARIUM_MODEL_MEDIUM: ${{ vars.TERRARIUM_MODEL_MEDIUM }}
-          TERRARIUM_MODEL_LOW: ${{ vars.TERRARIUM_MODEL_LOW }}
-          TERRARIUM_AUTO_REVIEW: ${{ vars.TERRARIUM_AUTO_REVIEW }}
-          TERRARIUM_WALLET: ${{ vars.TERRARIUM_WALLET }}
-          TERRARIUM_TOKEN: ${{ vars.TERRARIUM_TOKEN }}
-          BASE_RPC_URL: ${{ vars.BASE_RPC_URL }}
-        run: |
-          ./terrarium-owner 2>&1 | tee owner-output.log
-          tail -1 owner-output.log > artifact.json
-
-      - name: Upload run artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: terrarium-owner-${{ github.run_id }}
-          path: artifact.json
-          retention-days: 90
-
-      - name: Push changes
-        run: |
-          git config user.name "terrarium[bot]"
-          git config user.email "terrarium[bot]@users.noreply.github.com"
-          git add JOURNAL.md README.md .github/workflows/ || true
-          git diff --cached --quiet || git commit -m "terrarium: owner cycle $(date -u +%Y-%m-%dT%H:%M:%S)"
-          git push
+    uses: jbrower95/terrarium/.github/workflows/owner.yml@master
+    permissions:
+      id-token: write
+      contents: write
+      issues: write
+      pull-requests: write
+      actions: write
+    secrets: inherit

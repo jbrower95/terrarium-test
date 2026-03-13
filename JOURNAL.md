@@ -62,3 +62,10 @@ Inference failed: OpenRouter returned 401 Unauthorized: {"error":{"message":"Mis
 - Auto-review: disabled
 
 Inference failed: OpenRouter returned 401 Unauthorized: {"error":{"message":"Missing Authentication header","code":401}}
+
+## 2026-03-13 22:46:54 UTC
+- Balance: $-0.00 | Burn: $4.68/day | Runway: 0 days
+- Models: owner:kimi-k2.5, high:kimi-k2.5, medium:qwen3.5-35b, low:qwen3.5-35b
+- Auto-review: disabled
+
+Inference failed: OpenRouter returned 402 Payment Required: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 13274. To increase, visit https://openrouter.ai/settings/credits and add more credits","code":402,"metadata":{"provider_name":null}},"user_id":"user_30smJyAdyW6N4Hk3rx9AWbcF6EN"}

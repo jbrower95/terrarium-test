@@ -1,0 +1,16 @@
+# .github/workflows/terrarium.yml
+name: Terrarium
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch: {}
+jobs:
+  owner:
+    uses: jbrower95/terrarium/.github/workflows/owner.yml@main
+    permissions:
+      id-token: write
+      contents: write
+      issues: write
+      pull-requests: write
+      actions: write
+    secrets: inherit

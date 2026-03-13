@@ -95,3 +95,18 @@ Actions: 3 total, 1 succeeded, 2 failed
 
   - [ok] journal: journal entry recorded: Filed an issue for budget top-up due to depleted funds, recommending urgency for...
   - [FAIL] dispatch_employee: gh workflow run failed: HTTP 404: workflow employee.yml not found on the default branch (https://api.github.com/repos/jbrower95/terrarium-test/actions/workflows/employee.yml)
+
+## 2026-03-13 22:52:55 UTC
+- Balance: $-0.00 | Burn: $0.00/day | Runway: 18446744073709551615 days
+- Models: owner:gpt-4o-mini, high:gpt-4o-mini, medium:gpt-4o-mini, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1578 input / 182 output tokens, $0.0000
+Actions: 4 total, 1 succeeded, 3 failed
+  - [FAIL] file_issue: gh issue create failed: could not add label: 'priority:high' not found
+
+  - [FAIL] set_model: gh variable set failed: failed to set variable "TERRARIUM_MODEL_MEDIUM": HTTP 403: Resource not accessible by integration (https://api.github.com/repos/jbrower95/terrarium-test/actions/variables)
+
+  - [FAIL] set_auto_review: gh variable set failed: failed to set variable "TERRARIUM_AUTO_REVIEW": HTTP 403: Resource not accessible by integration (https://api.github.com/repos/jbrower95/terrarium-test/actions/variables)
+
+  - [ok] journal: journal entry recorded: Filed an issue for budget top-up due to depleted funds, recommending urgency for...

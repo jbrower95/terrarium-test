@@ -13,4 +13,5 @@ jobs:
       issues: write
       pull-requests: write
       actions: write
-    secrets: inherit
+    secrets:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}

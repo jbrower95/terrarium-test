@@ -1,49 +1,79 @@
-use std::thread;
+use std::io;
 use std::time::{Duration, Instant};
-use crossterm::{execute, terminal::{self, ClearType}};
+use crossterm::event::{self, Event, KeyCode};
+use crossterm::terminal::{self, EnterAlternateScreen, LeaveAlternateScreen};
+use crossterm::{execute, ExecutableCommand};
+use ratatui::prelude::*;
+use ratatui::Terminal;
 
 mod game_state;
 
-const TICK_RATE_MS: u64 = 33;
-const WINNING_POINTS: u32 = 10;
+use game_state::GameState;
 
-fn main() {
+const TICK_RATE: Duration = Duration::from_millis(33); // ~30 FPS
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Setup panic hook to restore terminal
+    let original_hook = std::panic::take_hook();
+    std::panic::set_hook(Box::new(move |panic| {
+        let _ = restore_terminal();
+        original_hook(panic);
+    }));
+
     // Initialize terminal
-    let mut stdout = std::io::stdout();
-    terminal::enable_raw_mode().unwrap();
-    execute!(stdout, terminal::Clear(ClearType::All)).unwrap();
+    terminal::enable_raw_mode()?;
+    let mut stdout = io::stdout();
+    stdout.execute(EnterAlternateScreen)?;
+    let backend = CrosstermBackend::new(stdout);
+    let mut terminal = Terminal::new(backend)?;
 
-    let mut game_over = false;
-    let mut player_score = 0;
-    let mut enemy_score = 0;
+    // Get terminal size
+    let size = terminal.size()?;
+    let mut game_state = GameState::new(size.width, size.height);
+
     let mut last_tick = Instant::now();
 
-    while !game_over {
-        // Poll input
-        let input = game_state::poll_input();
-        game_state::update_game_state(input, &mut player_score, &mut enemy_score);
-        
-        // Check for game over condition
-        if player_score >= WINNING_POINTS {
-            game_over = true;
-            println!("You Win!");
-        } else if enemy_score >= WINNING_POINTS {
-            game_over = true;
-            println!("You Lose!");
+    // Main game loop
+    loop {
+        // Handle input
+        if event::poll(Duration::from_millis(0))? {
+            if let Event::Key(key) = event::read()? {
+                match key.code {
+                    KeyCode::Char('q') | KeyCode::Esc => break,
+                    KeyCode::Char('w') | KeyCode::Char('W') => game_state.move_paddle1_up(),
+                    KeyCode::Char('s') | KeyCode::Char('S') => game_state.move_paddle1_down(),
+                    KeyCode::Up => game_state.move_paddle2_up(),
+                    KeyCode::Down => game_state.move_paddle2_down(),
+                    _ => {}
+                }
+            }
         }
 
-        // Render the game state
-        game_state::render(player_score, enemy_score);
-
-        // Sleep to maintain fixed tick rate
-        let elapsed = last_tick.elapsed();
-        if elapsed < Duration::from_millis(TICK_RATE_MS) {
-            thread::sleep(Duration::from_millis(TICK_RATE_MS) - elapsed);
+        // Update game state
+        if last_tick.elapsed() >= TICK_RATE {
+            game_state.update();
+            last_tick = Instant::now();
         }
-        last_tick = Instant::now();
+
+        // Render
+        terminal.draw(|f| game_state.render(f))?;
+
+        // Check for game over
+        if game_state.is_game_over() {
+            break;
+        }
+
+        // Small sleep to prevent excessive CPU usage
+        std::thread::sleep(Duration::from_millis(1));
     }
 
-    // Clean terminal restore
-    terminal::disable_raw_mode().unwrap();
-    execute!(stdout, terminal::Clear(ClearType::All)).unwrap();
+    // Clean up terminal
+    restore_terminal()?;
+    Ok(())
+}
+
+fn restore_terminal() -> Result<(), Box<dyn std::error::Error>> {
+    terminal::disable_raw_mode()?;
+    execute!(io::stdout(), LeaveAlternateScreen)?;
+    Ok(())
 }

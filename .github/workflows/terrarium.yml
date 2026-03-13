@@ -20,9 +20,10 @@ jobs:
           fetch-depth: 0
 
       - name: Download terrarium-owner
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          RELEASE_URL="https://github.com/jbrower95/terrarium/releases/latest/download/terrarium-owner-linux-x86_64"
-          curl -sL "$RELEASE_URL" -o terrarium-owner
+          gh release download --repo jbrower95/terrarium --pattern "terrarium-owner-linux-x86_64" --output terrarium-owner
           chmod +x terrarium-owner
 
       - name: Run owner cycle

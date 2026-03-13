@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="310" viewBox="0 0 400 310">
+  <defs>
+    <style>
+      .bg { fill: #1a1a2e; rx: 12; ry: 12; }
+      .title { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 18px; font-weight: 700; fill: #e2e8f0; }
+      .label { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 11px; fill: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+      .value { font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace; font-size: 14px; fill: #f1f5f9; }
+      .value-lg { font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace; font-size: 22px; font-weight: 700; }
+      .model-label { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 10px; fill: #64748b; }
+      .model-value { font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace; font-size: 11px; fill: #cbd5e1; }
+      .footer { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 9px; fill: #475569; }
+      .divider { stroke: #2d2d4a; stroke-width: 1; }
+      .badge-bg { rx: 4; ry: 4; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" x="0" y="0" width="400" height="310" rx="12" ry="12"/>
+
+  <!-- Header -->
+  <text class="title" x="20" y="32">&#x1F331; terrarium</text>
+
+  <!-- Divider -->
+  <line class="divider" x1="20" y1="44" x2="380" y2="44"/>
+
+  <!-- Treasury (large) -->
+  <text class="label" x="20" y="66">Treasury</text>
+  <text class="value-lg" x="20" y="92" fill="#f87171">$0.00</text>
+
+  <!-- Runway + Burn rate + Credits (row) -->
+  <text class="label" x="200" y="66">Runway</text>
+  <text class="value" x="200" y="82" fill="#4ade80">∞</text>
+
+  <text class="label" x="300" y="66">Burn</text>
+  <text class="value" x="300" y="82" fill="#94a3b8">$0.00/d</text>
+
+  <text class="label" x="200" y="100">Credits</text>
+  <text class="value" x="200" y="116" fill="#c4b5fd">$-0.00</text>
+
+  <!-- Divider -->
+  <line class="divider" x1="20" y1="128" x2="380" y2="128"/>
+
+  <!-- Model tiers -->
+  <text class="label" x="20" y="148">Models</text>
+
+  <text class="model-label" x="20" y="166">owner</text>
+  <text class="model-value" x="70" y="166">gpt-4o-mini</text>
+
+  <text class="model-label" x="200" y="166">high</text>
+  <text class="model-value" x="240" y="166">gpt-4o-mini</text>
+
+  <text class="model-label" x="20" y="184">medium</text>
+  <text class="model-value" x="70" y="184">gpt-4o-mini</text>
+
+  <text class="model-label" x="200" y="184">low</text>
+  <text class="model-value" x="240" y="184">gpt-4o-mini</text>
+
+  <!-- Divider -->
+  <line class="divider" x1="20" y1="196" x2="380" y2="196"/>
+
+  <!-- Activity stats -->
+  <text class="label" x="20" y="216">Activity</text>
+
+  <!-- Issues badge -->
+  <rect class="badge-bg" x="20" y="224" width="70" height="22" fill="#1e3a5f"/>
+  <text class="value" x="55" y="239" text-anchor="middle" font-size="11">5 issues</text>
+
+  <!-- PRs badge -->
+  <rect class="badge-bg" x="100" y="224" width="70" height="22" fill="#1e3a5f"/>
+  <text class="value" x="135" y="239" text-anchor="middle" font-size="11">0 PRs</text>
+
+  <!-- Merged badge -->
+  <rect class="badge-bg" x="180" y="224" width="80" height="22" fill="#2d1b4e"/>
+  <text class="value" x="220" y="239" text-anchor="middle" font-size="11">0 merged</text>
+
+  <!-- Auto-review badge -->
+  <rect class="badge-bg" x="270" y="224" width="100" height="22" fill="#1a2e1a"/>
+  <text class="value" x="320" y="239" text-anchor="middle" font-size="11" fill="#94a3b8">review: OFF</text>
+
+  <!-- Divider -->
+  <line class="divider" x1="20" y1="258" x2="380" y2="258"/>
+
+  <!-- Footer -->
+  <text class="footer" x="20" y="276">Updated: 2026-03-13 22:52 UTC</text>
+  <text class="footer" x="380" y="276" text-anchor="end">github.com/terrarium</text>
+</svg>

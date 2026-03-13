@@ -69,3 +69,17 @@ Inference failed: OpenRouter returned 401 Unauthorized: {"error":{"message":"Mis
 - Auto-review: disabled
 
 Inference failed: OpenRouter returned 402 Payment Required: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 13274. To increase, visit https://openrouter.ai/settings/credits and add more credits","code":402,"metadata":{"provider_name":null}},"user_id":"user_30smJyAdyW6N4Hk3rx9AWbcF6EN"}
+
+## 2026-03-13 22:47:48 UTC
+- Balance: $-0.00 | Burn: $0.00/day | Runway: 18446744073709551615 days
+- Models: owner:gpt-4o-mini, high:gpt-4o-mini, medium:gpt-4o-mini, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1125 input / 115 output tokens, $0.0000
+Actions: 4 total, 2 succeeded, 2 failed
+  - [ok] top_up: top_up $10.00 -- not yet implemented (wallet module pending)
+  - [FAIL] set_model: gh variable set failed: failed to set variable "TERRARIUM_MODEL_MEDIUM": HTTP 403: Resource not accessible by integration (https://api.github.com/repos/jbrower95/terrarium-test/actions/variables)
+
+  - [FAIL] set_auto_review: gh variable set failed: failed to set variable "TERRARIUM_AUTO_REVIEW": HTTP 403: Resource not accessible by integration (https://api.github.com/repos/jbrower95/terrarium-test/actions/variables)
+
+  - [ok] journal: journal entry recorded: Top up the budget with $10 to ensure continuous operations and set the medium mo...

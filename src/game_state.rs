@@ -102,28 +102,28 @@ impl GameState {
             }
         }
 
-        // Score when ball goes out of bounds
+        // Ball goes out of bounds (scoring)
         if self.ball_x < 0.0 {
             self.score2 += 1;
             self.reset_ball();
+            if self.score2 >= WINNING_SCORE {
+                self.game_over = true;
+                self.winner = Some(2);
+            }
         } else if self.ball_x > self.width as f64 {
             self.score1 += 1;
             self.reset_ball();
-        }
-
-        // Check for game over
-        if self.score1 >= WINNING_SCORE {
-            self.game_over = true;
-            self.winner = Some(1);
-        } else if self.score2 >= WINNING_SCORE {
-            self.game_over = true;
-            self.winner = Some(2);
+            if self.score1 >= WINNING_SCORE {
+                self.game_over = true;
+                self.winner = Some(1);
+            }
         }
     }
 
     fn reset_ball(&mut self) {
         self.ball_x = self.width as f64 / 2.0;
         self.ball_y = self.height as f64 / 2.0;
+        // Randomize direction a bit
         self.ball_dx = if self.ball_dx > 0.0 { -BALL_SPEED } else { BALL_SPEED };
         self.ball_dy = BALL_SPEED * 0.5;
     }
@@ -132,165 +132,140 @@ impl GameState {
         self.game_over
     }
 
-    pub fn render(&self, frame: &mut Frame) {
-        let area = frame.area();
-        
-        // Create main block
-        let block = Block::default()
-            .borders(Borders::ALL)
-            .title(" Pong Game ")
-            .style(Style::default().fg(Color::White));
-        
-        frame.render_widget(block, area);
-        
-        // Get inner area (excluding borders)
-        let inner_area = Rect {
-            x: area.x + 1,
-            y: area.y + 1,
-            width: area.width.saturating_sub(2),
-            height: area.height.saturating_sub(2),
-        };
-        
-        // Render score
-        let score_text = format!("Player 1: {}  |  Player 2: {}", self.score1, self.score2);
-        let score_paragraph = Paragraph::new(score_text)
-            .style(Style::default().fg(Color::Yellow))
-            .alignment(Alignment::Center);
-        
-        let score_area = Rect {
-            x: inner_area.x,
-            y: inner_area.y,
-            width: inner_area.width,
-            height: 1,
-        };
-        
-        frame.render_widget(score_paragraph, score_area);
-        
-        // Game area (below score)
-        let game_area = Rect {
-            x: inner_area.x,
-            y: inner_area.y + 2,
-            width: inner_area.width,
-            height: inner_area.height.saturating_sub(2),
-        };
-        
-        // Render paddles and ball
-        self.render_game_objects(frame, game_area);
-        
-        // Render game over message if applicable
+    pub fn render(&self, frame: &mut Frame, area: Rect) {
         if self.game_over {
             self.render_game_over(frame, area);
+            return;
         }
+
+        // Create a block for the game area
+        let block = Block::default()
+            .borders(Borders::ALL)
+            .title("Pong Game")
+            .title_alignment(Alignment::Center);
         
-        // Render instructions
-        self.render_instructions(frame, area);
-    }
-    
-    fn render_game_objects(&self, frame: &mut Frame, area: Rect) {
-        // Render left paddle (Player 1)
-        let paddle1_y = (self.paddle1_y as u16).saturating_sub(PADDLE_HEIGHT / 2);
-        for i in 0..PADDLE_HEIGHT {
-            if paddle1_y + i < area.height && area.y + paddle1_y + i < frame.area().height {
-                let paddle_area = Rect {
-                    x: area.x,
-                    y: area.y + paddle1_y + i,
-                    width: PADDLE_WIDTH,
-                    height: 1,
-                };
-                let paddle_char = Paragraph::new("█")
-                    .style(Style::default().fg(Color::Blue));
-                frame.render_widget(paddle_char, paddle_area);
-            }
-        }
+        let inner = block.inner(area);
+        frame.render_widget(block, area);
+
+        // Update dimensions if area has changed
+        let new_width = inner.width;
+        let new_height = inner.height;
         
-        // Render right paddle (Player 2)
-        let paddle2_y = (self.paddle2_y as u16).saturating_sub(PADDLE_HEIGHT / 2);
-        for i in 0..PADDLE_HEIGHT {
-            if paddle2_y + i < area.height && area.y + paddle2_y + i < frame.area().height {
-                let paddle_area = Rect {
-                    x: area.x + area.width.saturating_sub(PADDLE_WIDTH),
-                    y: area.y + paddle2_y + i,
-                    width: PADDLE_WIDTH,
-                    height: 1,
-                };
-                let paddle_char = Paragraph::new("█")
-                    .style(Style::default().fg(Color::Red));
-                frame.render_widget(paddle_char, paddle_area);
-            }
-        }
+        // Render score
+        let score_text = format!("Player 1: {}  Player 2: {}", self.score1, self.score2);
+        let score_paragraph = Paragraph::new(score_text)
+            .alignment(Alignment::Center)
+            .style(Style::default().fg(Color::White));
         
+        let score_area = Rect {
+            x: inner.x,
+            y: inner.y,
+            width: inner.width,
+            height: 1,
+        };
+        frame.render_widget(score_paragraph, score_area);
+
+        // Adjust game area to account for score display
+        let game_area = Rect {
+            x: inner.x,
+            y: inner.y + 1,
+            width: inner.width,
+            height: inner.height.saturating_sub(1),
+        };
+
         // Render ball
-        let ball_x = self.ball_x as u16;
-        let ball_y = self.ball_y as u16;
+        let ball_x = (self.ball_x as u16).min(game_area.width.saturating_sub(1));
+        let ball_y = (self.ball_y as u16).min(game_area.height.saturating_sub(1));
         
-        if ball_x < area.width && ball_y < area.height {
+        if ball_x < game_area.width && ball_y < game_area.height {
             let ball_area = Rect {
-                x: area.x + ball_x,
-                y: area.y + ball_y,
+                x: game_area.x + ball_x,
+                y: game_area.y + ball_y,
                 width: 1,
                 height: 1,
             };
-            let ball_char = Paragraph::new("●")
-                .style(Style::default().fg(Color::White));
-            frame.render_widget(ball_char, ball_area);
+            let ball_widget = Paragraph::new("●")
+                .style(Style::default().fg(Color::Yellow));
+            frame.render_widget(ball_widget, ball_area);
         }
+
+        // Render paddles
+        let paddle1_start_y = (self.paddle1_y - PADDLE_HEIGHT as f64 / 2.0).max(0.0) as u16;
+        let paddle2_start_y = (self.paddle2_y - PADDLE_HEIGHT as f64 / 2.0).max(0.0) as u16;
         
-        // Render center line
-        let center_x = area.x + area.width / 2;
-        for y in 0..area.height {
-            if y % 2 == 0 {
-                let line_area = Rect {
-                    x: center_x,
-                    y: area.y + y,
-                    width: 1,
+        // Left paddle
+        for i in 0..PADDLE_HEIGHT {
+            let paddle_y = paddle1_start_y + i;
+            if paddle_y < game_area.height {
+                let paddle_area = Rect {
+                    x: game_area.x,
+                    y: game_area.y + paddle_y,
+                    width: PADDLE_WIDTH,
                     height: 1,
                 };
-                let line_char = Paragraph::new("|")
-                    .style(Style::default().fg(Color::DarkGray));
-                frame.render_widget(line_char, line_area);
+                let paddle_widget = Paragraph::new("█")
+                    .style(Style::default().fg(Color::Blue));
+                frame.render_widget(paddle_widget, paddle_area);
+            }
+        }
+        
+        // Right paddle
+        for i in 0..PADDLE_HEIGHT {
+            let paddle_y = paddle2_start_y + i;
+            if paddle_y < game_area.height {
+                let paddle_area = Rect {
+                    x: game_area.x + game_area.width.saturating_sub(PADDLE_WIDTH),
+                    y: game_area.y + paddle_y,
+                    width: PADDLE_WIDTH,
+                    height: 1,
+                };
+                let paddle_widget = Paragraph::new("█")
+                    .style(Style::default().fg(Color::Red));
+                frame.render_widget(paddle_widget, paddle_area);
             }
         }
     }
-    
+
     fn render_game_over(&self, frame: &mut Frame, area: Rect) {
+        let block = Block::default()
+            .borders(Borders::ALL)
+            .title("Game Over")
+            .title_alignment(Alignment::Center)
+            .style(Style::default().fg(Color::Red));
+        
+        let inner = block.inner(area);
+        frame.render_widget(block, area);
+
         let message = match self.winner {
-            Some(1) => "Player 1 Wins\! Press 'q' to quit.",
-            Some(2) => "Player 2 Wins\! Press 'q' to quit.",
-            _ => "Game Over\! Press 'q' to quit.",
+            Some(1) => "Player 1 Wins! Press 'q' to quit.",
+            Some(2) => "Player 2 Wins! Press 'q' to quit.",
+            None => "Game Over! Press 'q' to quit.",
         };
-        
-        let popup_area = Rect {
-            x: area.width / 4,
-            y: area.height / 2,
-            width: area.width / 2,
-            height: 3,
-        };
-        
-        let popup = Paragraph::new(message)
-            .style(Style::default().fg(Color::Yellow).bg(Color::Black))
+
+        let game_over_paragraph = Paragraph::new(message)
             .alignment(Alignment::Center)
-            .block(
-                Block::default()
-                    .borders(Borders::ALL)
-                    .style(Style::default().fg(Color::Yellow))
-            );
+            .style(Style::default().fg(Color::White));
         
-        frame.render_widget(popup, popup_area);
-    }
-    
-    fn render_instructions(&self, frame: &mut Frame, area: Rect) {
-        let instructions = "Player 1: W/S  |  Player 2: ↑/↓  |  Quit: Q";
-        let instructions_paragraph = Paragraph::new(instructions)
-            .style(Style::default().fg(Color::Gray))
-            .alignment(Alignment::Center);
-        
-        let instructions_area = Rect {
-            x: area.x + 1,
-            y: area.y + area.height.saturating_sub(1),
-            width: area.width.saturating_sub(2),
+        let text_area = Rect {
+            x: inner.x,
+            y: inner.y + inner.height / 2,
+            width: inner.width,
             height: 1,
         };
+        frame.render_widget(game_over_paragraph, text_area);
+
+        // Show final score
+        let final_score = format!("Final Score - Player 1: {}  Player 2: {}", self.score1, self.score2);
+        let score_paragraph = Paragraph::new(final_score)
+            .alignment(Alignment::Center)
+            .style(Style::default().fg(Color::Yellow));
         
-        frame.render_widget(instructions_paragraph, instructions_area);
+        let score_area = Rect {
+            x: inner.x,
+            y: inner.y + inner.height / 2 + 2,
+            width: inner.width,
+            height: 1,
+        };
+        frame.render_widget(score_paragraph, score_area);
     }
 }

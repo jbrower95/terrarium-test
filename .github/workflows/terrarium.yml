@@ -19,12 +19,24 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download terrarium-owner
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Checkout terrarium source
+        uses: actions/checkout@v4
+        with:
+          repository: jbrower95/terrarium
+          path: terrarium-src
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build terrarium-owner
         run: |
-          gh release download --repo jbrower95/terrarium --pattern "terrarium-owner-linux-x86_64" --output terrarium-owner
-          chmod +x terrarium-owner
+          cd terrarium-src
+          cargo build --release -p terrarium-owner
+          cp target/release/terrarium-owner ../terrarium-owner
+          chmod +x ../terrarium-owner
+          cd ..
+          rm -rf terrarium-src
 
       - name: Run owner cycle
         env:

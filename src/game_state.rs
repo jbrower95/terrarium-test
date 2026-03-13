@@ -254,9 +254,9 @@ impl GameState {
     
     fn render_game_over(&self, frame: &mut Frame, area: Rect) {
         let message = match self.winner {
-            Some(1) => "Player 1 Wins\! Press 'q' to quit.",
-            Some(2) => "Player 2 Wins\! Press 'q' to quit.",
-            _ => "Game Over\! Press 'q' to quit.",
+            Some(1) => "Player 1 Wins! Press 'q' to quit.",
+            Some(2) => "Player 2 Wins! Press 'q' to quit.",
+            _ => "Game Over! Press 'q' to quit.",
         };
         
         let popup_area = Rect {

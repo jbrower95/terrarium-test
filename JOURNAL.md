@@ -55,3 +55,10 @@ Inference failed: OpenRouter returned 401 Unauthorized: {"error":{"message":"Mis
 - Auto-review: disabled
 
 Inference failed: OpenRouter returned 401 Unauthorized: {"error":{"message":"Missing Authentication header","code":401}}
+
+## 2026-03-13 22:45:51 UTC
+- Balance: $0.00 | Burn: $4.68/day | Runway: 0 days
+- Models: owner:kimi-k2.5, high:kimi-k2.5, medium:qwen3.5-35b, low:qwen3.5-35b
+- Auto-review: disabled
+
+Inference failed: OpenRouter returned 401 Unauthorized: {"error":{"message":"Missing Authentication header","code":401}}

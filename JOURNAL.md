@@ -124,3 +124,18 @@ Actions: 4 total, 1 succeeded, 3 failed
   - [FAIL] set_model: gh variable set failed: failed to set variable "TERRARIUM_MODEL_MEDIUM": HTTP 403: Resource not accessible by integration (https://api.github.com/repos/jbrower95/terrarium-test/actions/variables)
 
   - [FAIL] set_auto_review: gh variable set failed: failed to set variable "TERRARIUM_AUTO_REVIEW": HTTP 403: Resource not accessible by integration (https://api.github.com/repos/jbrower95/terrarium-test/actions/variables)
+
+## 2026-03-13 23:05:41 UTC
+- Balance: $-0.01 | Burn: $0.00/day | Runway: 18446744073709551615 days
+- Models: owner:gpt-4o-mini, high:gpt-4o-mini, medium:gpt-4o-mini, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1953 input / 183 output tokens, $0.0000
+Actions: 4 total, 1 succeeded, 3 failed
+  - [FAIL] file_issue: gh issue create failed: could not add to milestone 'v0.1': 'v0.1' not found
+
+  - [FAIL] set_model: gh variable set failed: failed to set variable "TERRARIUM_MODEL_MEDIUM": HTTP 403: Resource not accessible by integration (https://api.github.com/repos/jbrower95/terrarium-test/actions/variables)
+
+  - [FAIL] set_auto_review: gh variable set failed: failed to set variable "TERRARIUM_AUTO_REVIEW": HTTP 403: Resource not accessible by integration (https://api.github.com/repos/jbrower95/terrarium-test/actions/variables)
+
+  - [ok] journal: journal entry recorded: Attempted to set the medium model and enable auto-review, but faced issues with ...

@@ -1,42 +1,15 @@
-pub struct GameState {
-    pub ball_position: (f32, f32), // (x, y)
-    pub ball_velocity: (f32, f32), // (dx, dy)
-    pub paddle_positions: ((f32, f32), (f32, f32)), // (left, right)
-    pub scores: (u32, u32), // (player1, player2)
+use crossterm::{terminal::{self, ClearType}};
+
+pub fn poll_input() -> String {
+    // Placeholder for input poll implementation
+    String::new()
 }
 
-impl GameState {
-    pub fn new() -> Self {
-        GameState {
-            ball_position: (0.0, 0.0),
-            ball_velocity: (0.0, 0.0),
-            paddle_positions: ((0.0, 0.0), (0.0, 0.0)),
-            scores: (0, 0),
-        }
-    }
+pub fn update_game_state(input: String, player_score: &mut u32, enemy_score: &mut u32) {
+    // Placeholder for actual game state update logic
+}
 
-    pub fn reset_ball(&mut self) {
-        self.ball_position = (0.0, 0.0);
-        self.ball_velocity = (0.0, 0.0);
-    }
-
-    pub fn update(&mut self) {
-        // Ball-wall collision
-        if self.ball_position.1 <= 0.0 || self.ball_position.1 >= 1.0 {
-            self.ball_velocity.1 *= -1.0;
-        }
-
-        // Update ball position
-        self.ball_position.0 += self.ball_velocity.0;
-        self.ball_position.1 += self.ball_velocity.1;
-
-        // Check if ball is out of bounds (scoring)
-        if self.ball_position.0 < 0.0 {
-            self.scores.1 += 1;
-            self.reset_ball();
-        } else if self.ball_position.0 > 1.0 {
-            self.scores.0 += 1;
-            self.reset_ball();
-        }
-    }
+pub fn render(player_score: u32, enemy_score: u32) {
+    // Placeholder for rendering the game state
+    println!("Player Score: {}, Enemy Score: {}", player_score, enemy_score);
 }

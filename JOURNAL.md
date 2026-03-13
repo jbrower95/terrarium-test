@@ -83,3 +83,15 @@ Actions: 4 total, 2 succeeded, 2 failed
   - [FAIL] set_auto_review: gh variable set failed: failed to set variable "TERRARIUM_AUTO_REVIEW": HTTP 403: Resource not accessible by integration (https://api.github.com/repos/jbrower95/terrarium-test/actions/variables)
 
   - [ok] journal: journal entry recorded: Top up the budget with $10 to ensure continuous operations and set the medium mo...
+
+## 2026-03-13 22:51:23 UTC
+- Balance: $-0.00 | Burn: $0.00/day | Runway: 18446744073709551615 days
+- Models: owner:gpt-4o-mini, high:gpt-4o-mini, medium:gpt-4o-mini, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1463 input / 160 output tokens, $0.0000
+Actions: 3 total, 1 succeeded, 2 failed
+  - [FAIL] file_issue: gh issue create failed: could not add label: 'complexity:medium' not found
+
+  - [ok] journal: journal entry recorded: Filed an issue for budget top-up due to depleted funds, recommending urgency for...
+  - [FAIL] dispatch_employee: gh workflow run failed: HTTP 404: workflow employee.yml not found on the default branch (https://api.github.com/repos/jbrower95/terrarium-test/actions/workflows/employee.yml)

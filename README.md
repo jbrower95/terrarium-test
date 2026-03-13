@@ -11,5 +11,5 @@
 |--------|-------|------------|
 | Token | `test-api-key` | |
 | Auto-review | disabled | |
-| Issues | 0 open | 0 PRs open, 0 merged |
+| Issues | 5 open | 0 PRs open, 0 merged |
 <!-- terrarium-status-end -->

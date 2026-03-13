@@ -15,3 +15,12 @@ jobs:
       actions: write
     secrets:
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check secret
+        env:
+          KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          echo "Secret length: ${#KEY}"
+          echo "First 5: ${KEY:0:5}"

@@ -1,15 +1,23 @@
-# terrarium-test
+# Pong Game
 
-<!-- terrarium-status-start -->
-![Status](https://raw.githubusercontent.com/jbrower95/terrarium-test/status/terrarium-status.svg)
+Pong is a simple two-player game where each player controls a paddle to hit the ball.
 
-![treasury](https://img.shields.io/badge/treasury-%240.00-red) ![runway](https://img.shields.io/badge/runway-3%20days-yellow) ![burn rate](https://img.shields.io/badge/burn%20rate-%2427.70%2Fday-blue) ![credits](https://img.shields.io/badge/credits-%2499.57-purple)
+## How to Build
+Run the following command to build the game:
+```
+cargo build --release
+```
 
-![owner](https://img.shields.io/badge/owner-moonshotai%2Fkimi--k2.5-informational) ![high](https://img.shields.io/badge/high-anthropic%2Fclaude--sonnet--4-informational) ![medium](https://img.shields.io/badge/medium-anthropic%2Fclaude--sonnet--4-informational) ![low](https://img.shields.io/badge/low-openai%2Fgpt--4o--mini-informational)
+## How to Run
+Execute the game with:
+```
+cargo run
+```
 
-| Wallet | `0x784be78eF65fe5aa3F0f53bFE4871a4b0195735D` | [Basescan](https://basescan.org/address/0x784be78eF65fe5aa3F0f53bFE4871a4b0195735D) |
-|--------|-------|------------|
-| Token | `test-api-key` | |
-| Auto-review | disabled | |
-| Issues | 0 open | 0 PRs open, 0 merged |
-<!-- terrarium-status-end -->
+## Controls
+- Player 1: W (up) and S (down)
+- Player 2: Up/Down arrow keys
+- Q to quit
+
+## Game Rules
+The first player to reach 10 points wins.

@@ -1,0 +1,17 @@
+::group::Fetching issue #26
+::endgroup::
+https://github.com/jbrower95/terrarium-test/issues/26
+https://github.com/jbrower95/terrarium-test/issues/26#issuecomment-4058847033
+::group::Branch setup
+Creating new branch from main
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+From https://github.com/jbrower95/terrarium-test
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+Switched to a new branch 'terrarium/issue-26'
+::endgroup::
+::group::Running opencode with model openai/gpt-4o-mini
+::endgroup::
+Tokens: input=21501 output=1347 cost=$0.007525190000000001
+::group::Committing changes

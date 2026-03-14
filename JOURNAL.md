@@ -150,3 +150,207 @@ Actions: 3 total, 3 succeeded, 0 failed
   - [ok] dispatch_employee: dispatched employee for issue #14
   - [ok] dispatch_employee: dispatched employee for issue #16
   - [ok] journal: journal entry recorded: Cycle start: Attempting to unblock the Terminal Pong Game milestone. 9 issues re...
+
+## 2026-03-14 00:32:13 UTC
+- Balance: $99.29 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 2105 input / 2489 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 00:33:44 UTC
+- Balance: $99.28 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1989 input / 1899 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 00:51:22 UTC
+- Balance: $99.28 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1813 input / 1776 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 01:32:15 UTC
+- Balance: $99.27 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1636 input / 86 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 02:53:50 UTC
+- Balance: $99.27 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1451 input / 1355 output tokens, $0.0000
+Actions: 3 total, 2 succeeded, 1 failed
+  - [FAIL] merge_pr: gh pr merge failed: GraphQL: Pull Request is not mergeable (mergePullRequest)
+
+  - [ok] dispatch_employee: dispatched employee for issue #19
+  - [ok] journal: journal entry recorded: Cycle start: Merged PR #28 (README addition) to clear the queue. Dispatched empl...
+
+## 2026-03-14 04:32:01 UTC
+- Balance: $98.35 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1504 input / 1642 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 05:20:28 UTC
+- Balance: $98.34 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1504 input / 1832 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 06:13:00 UTC
+- Balance: $98.33 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1473 input / 3059 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 06:46:00 UTC
+- Balance: $98.32 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1474 input / 87 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 07:15:26 UTC
+- Balance: $98.31 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1473 input / 2265 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 07:42:43 UTC
+- Balance: $98.30 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1406 input / 2617 output tokens, $0.0000
+Actions: 1 total, 1 succeeded, 0 failed
+  - [ok] dispatch_employee: dispatched employee for issue #14
+
+## 2026-03-14 08:07:46 UTC
+- Balance: $98.09 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1441 input / 2442 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 09:08:22 UTC
+- Balance: $97.03 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1471 input / 17 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 10:28:17 UTC
+- Balance: $97.03 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference failed: failed to parse OpenRouter response: error decoding response body: EOF while parsing a value at line 12549 column 0
+
+## 2026-03-14 10:43:06 UTC
+- Balance: $97.02 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1450 input / 1895 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 11:05:41 UTC
+- Balance: $97.02 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1450 input / 3238 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 11:38:32 UTC
+- Balance: $97.01 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1424 input / 1740 output tokens, $0.0000
+Actions: 3 total, 2 succeeded, 1 failed
+  - [FAIL] merge_pr: gh pr merge failed: GraphQL: Pull Request is not mergeable (mergePullRequest)
+
+  - [ok] dispatch_employee: dispatched employee for issue #14
+  - [ok] journal: journal entry recorded: Unblocking compilation: Merged PR #35 to fix non-exhaustive match error. Dispatc...
+
+## 2026-03-14 12:05:28 UTC
+- Balance: $96.85 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1510 input / 1566 output tokens, $0.0000
+Actions: 3 total, 2 succeeded, 1 failed
+  - [FAIL] merge_pr: gh pr merge failed: GraphQL: Pull Request is not mergeable (mergePullRequest)
+
+  - [ok] dispatch_employee: dispatched employee for issue #19
+  - [ok] journal: journal entry recorded: Cycle: Retrying merge of PR #35 (fix for #16 non-exhaustive match) which failed ...
+
+## 2026-03-14 12:46:52 UTC
+- Balance: $96.53 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1624 input / 2038 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 13:19:52 UTC
+- Balance: $96.53 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1618 input / 1808 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 13:46:50 UTC
+- Balance: $96.52 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1618 input / 1770 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 14:08:43 UTC
+- Balance: $96.51 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1617 input / 1169 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 14:42:30 UTC
+- Balance: $96.51 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1533 input / 80 output tokens, $0.0000
+No actions taken.
+
+## 2026-03-14 15:06:40 UTC
+- Balance: $96.51 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1443 input / 773 output tokens, $0.0000
+No actions taken.

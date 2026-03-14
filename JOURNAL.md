@@ -346,3 +346,11 @@ No actions taken.
 
 Inference: 1533 input / 80 output tokens, $0.0000
 No actions taken.
+
+## 2026-03-14 15:06:40 UTC
+- Balance: $96.51 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1443 input / 773 output tokens, $0.0000
+No actions taken.

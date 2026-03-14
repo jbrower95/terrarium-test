@@ -1,67 +1,24 @@
 name: Terrarium Employee
-
 on:
   workflow_dispatch:
     inputs:
       issue_number:
-        description: 'Issue number to work on'
         required: true
-        type: number
       complexity:
-        description: 'Task complexity (low, medium, high)'
         required: true
-        type: choice
-        options:
-          - low
-          - medium
-          - high
-
+        default: medium
 concurrency:
   group: terrarium-employee-issue-${{ inputs.issue_number }}
   cancel-in-progress: false
-
-permissions:
-  contents: write
-  issues: write
-  pull-requests: write
-  packages: read
-
 jobs:
   employee:
-    runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/jbrower95/terrarium-employee:latest
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Configure git identity
-        run: |
-          git config --global user.name "terrarium[bot]"
-          git config --global user.email "terrarium[bot]@users.noreply.github.com"
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
-
-      - name: Run employee
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GITHUB_TOKEN: ${{ github.token }}
-          TERRARIUM_ISSUE: ${{ inputs.issue_number }}
-          TERRARIUM_COMPLEXITY: ${{ inputs.complexity }}
-          TERRARIUM_MODEL_LOW: ${{ vars.TERRARIUM_MODEL_LOW }}
-          TERRARIUM_MODEL_MEDIUM: ${{ vars.TERRARIUM_MODEL_MEDIUM }}
-          TERRARIUM_MODEL_HIGH: ${{ vars.TERRARIUM_MODEL_HIGH }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: |
-          /entrypoint.sh 2>&1 | tee employee-output.log
-          tail -1 employee-output.log > artifact.json
-
-      - name: Upload run artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: terrarium-employee-${{ github.run_id }}-${{ inputs.issue_number }}
-          path: artifact.json
-          retention-days: 90
+    uses: jbrower95/terrarium/.github/workflows/employee.yml@master
+    with:
+      issue_number: ${{ inputs.issue_number }}
+      complexity: ${{ inputs.complexity }}
+    permissions:
+      id-token: write
+      contents: write
+      issues: write
+      pull-requests: write
+    secrets: inherit

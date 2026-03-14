@@ -243,3 +243,11 @@ No actions taken.
 Inference: 1406 input / 2617 output tokens, $0.0000
 Actions: 1 total, 1 succeeded, 0 failed
   - [ok] dispatch_employee: dispatched employee for issue #14
+
+## 2026-03-14 08:07:46 UTC
+- Balance: $98.09 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1441 input / 2442 output tokens, $0.0000
+No actions taken.

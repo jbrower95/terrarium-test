@@ -294,3 +294,15 @@ Actions: 3 total, 2 succeeded, 1 failed
 
   - [ok] dispatch_employee: dispatched employee for issue #14
   - [ok] journal: journal entry recorded: Unblocking compilation: Merged PR #35 to fix non-exhaustive match error. Dispatc...
+
+## 2026-03-14 12:05:28 UTC
+- Balance: $96.85 | Burn: $27.70/day | Runway: 3 days
+- Models: owner:kimi-k2.5, high:claude-sonnet-4, medium:claude-sonnet-4, low:gpt-4o-mini
+- Auto-review: disabled
+
+Inference: 1510 input / 1566 output tokens, $0.0000
+Actions: 3 total, 2 succeeded, 1 failed
+  - [FAIL] merge_pr: gh pr merge failed: GraphQL: Pull Request is not mergeable (mergePullRequest)
+
+  - [ok] dispatch_employee: dispatched employee for issue #19
+  - [ok] journal: journal entry recorded: Cycle: Retrying merge of PR #35 (fix for #16 non-exhaustive match) which failed ...

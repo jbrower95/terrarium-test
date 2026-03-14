@@ -16,6 +16,10 @@ on:
           - medium
           - high
 
+concurrency:
+  group: terrarium-employee-issue-${{ inputs.issue_number }}
+  cancel-in-progress: false
+
 permissions:
   contents: write
   issues: write
@@ -27,6 +31,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/jbrower95/terrarium-employee:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:

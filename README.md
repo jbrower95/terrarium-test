@@ -1,3 +1,5 @@
+[![Terrarium](https://img.shields.io/badge/terrarium-enabled-green)](https://terrarium.dev)
+
 # terrarium-test
 
 <!-- terrarium-status-start -->

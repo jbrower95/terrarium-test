@@ -1,4 +1,3 @@
-# .github/workflows/terrarium.yml
 name: Terrarium
 on:
   push:
@@ -15,5 +14,4 @@ jobs:
       issues: write
       pull-requests: write
       actions: write
-    secrets:
-      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    secrets: inherit

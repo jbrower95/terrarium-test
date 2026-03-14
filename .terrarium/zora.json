@@ -1,0 +1,5 @@
+{
+  "name": "jbrower95/terrarium-test",
+  "description": "A test repo for using terrarium's github action",
+  "image": "https://terrarium.sillyventures.co/logo.png"
+}
